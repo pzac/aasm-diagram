@@ -48,6 +48,7 @@ module AASMDiagram
     end
 
     def events
+      return [] if @aasm_instance.events.size == 0
       @aasm_instance.events.first.state_machine.events.values
     end
   end
