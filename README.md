@@ -76,6 +76,10 @@ you can skip the state machine name parameter.
 
 `rails aasm-diagram:generate[my_model]`
 
+If your model is in a module you can use Rails' classify conventions:
+
+  `rails aasm-diagram:generate[my_module/my_model]`
+
 ### Plain Ruby
 
 For plain Ruby projects the gem includes a Rakefile that can be loaded in your project's Rakefile,

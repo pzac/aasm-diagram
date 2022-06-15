@@ -2,7 +2,12 @@ namespace :'aasm-diagram' do
   desc 'Generate AASM diagram for the given model and (optionally) state machine'
   task :generate, [:model, :smn] => :environment do |_task, args|
     puts 'Missing `model` argument.' unless args[:model].present?
-    model_klass = args[:model].camelize.safe_constantize
+    model_klass = if args[:model].respond_to?(:classify)
+      args[:model].classify.safe_constantize
+    else
+      args[:model].camelize.safe_constantize
+    end
+
     puts 'Invalid `model` argument.' unless model_klass
 
     smn = args[:smn]&.to_sym
